@@ -1,0 +1,14 @@
+@startuml
+left to right direction
+skinparam linetype ortho
+actor Customer
+rectangle "Ski Rental" {
+  usecase "Get Ski Assortment" as UC1
+  usecase "Rent Ski" as UC2
+  usecase "Get Rentals" as UC3
+}
+
+Customer --> UC1
+Customer --> UC2
+Customer --> UC3
+@enduml
