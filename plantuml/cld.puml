@@ -1,0 +1,40 @@
+@startuml
+enum SkiType {
+  SLALOM,
+    GRAND_SLALOM,
+    SUPERG,
+    FREESTYLE,
+    TOUREN
+}
+
+class Ski {
+    long id
+    String brand
+    SkiType type
+    int length
+    int year
+}
+
+class Customer {
+    long id
+    String firstName
+    String lastName
+}
+
+class Rental {
+    Ski ski
+    Customer customer
+    LocalDate startDate
+    LocalDate endDate
+    double price
+}
+
+Rental "*"-> "1" Customer : rents <
+Ski "1" <- "*" Rental : is rented >
+Ski -- SkiType : > has a
+
+hide Ski methods
+hide SkiType methods
+hide Customer methods
+hide Rental methods
+@enduml
