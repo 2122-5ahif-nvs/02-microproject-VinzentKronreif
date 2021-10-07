@@ -14,12 +14,24 @@ ifdef::backend-html5[]
 // print the toc here (not at the default position)
 //toc::[]
 
-== Klassendiagramm
+== Description
+We had to implement a REST-Service with the CRUD-functionalities. The endpoints are tested via http-requests in the request file. Endpoints work with Json and Xml and are documented with Swagger.
 
-.Class diagram
+My microproject is about a Ski Rental Service. You can rent a pair of ski and pay per day.
+
+
+== Class Diagram
+
+.Class Diagram
 [plantuml,cld,png, align=left]
 ----
 include::plantuml/cld.puml[]
 ----
 
+== Use Case Diagram
+.Use Case Diagram
+[plantuml,ucd,png, align=left]
+----
+include::plantuml/ucd.puml[]
+----
 
