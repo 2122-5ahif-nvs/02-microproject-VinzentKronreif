@@ -1,5 +1,9 @@
 package at.htl.skirental.entity;
 
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+
+import javax.json.bind.annotation.JsonbDateFormat;
+import javax.json.bind.annotation.JsonbProperty;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
@@ -9,6 +13,7 @@ import java.time.LocalDate;
         @NamedQuery(name = "Rental.getRentalByCustomer", query = "select r from Rental r where r.customer = :customer")
 })
 @Entity
+@Schema(description = "This is a Rental; it combines the Customer and the ski that is rented.")
 public class Rental {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +25,17 @@ public class Rental {
     @ManyToOne
     Customer customer;
 
-    //private Ski ski;
-    //private Customer customer;
+    @JsonbProperty("start_date")
+    @JsonbDateFormat("dd-MM-yyyy")
+    @Schema(implementation = String.class, format = "date", required = true)
     private LocalDate startDate;
+    @JsonbProperty("end_date")
+    @JsonbDateFormat("dd-MM-yyyy")
+    @Schema(implementation = String.class, format = "date", required = true)
     private LocalDate endDate;
+
+    @JsonbProperty("price")
+    @Schema(required = true)
     double price;
 
     public Long getId() {
